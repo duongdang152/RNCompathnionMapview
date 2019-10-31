@@ -1,31 +1,38 @@
 package com.rncompathnionmapview;
 
-import com.compathnion.sdk.SDK;
-import com.compathnion.sdk.SDKConfig;
+import android.util.Log;
+import android.view.View;
+
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.uimanager.SimpleViewManager;
-import com.facebook.react.uimanager.ThemedReactContext;
+import com.facebook.react.bridge.ReactContextBaseJavaModule;
+import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.uimanager.UIManagerModule;
 
 import javax.annotation.Nonnull;
 
-public class MapViewModule extends SimpleViewManager<ContainerView> {
-    private static final String REACT_CLASS = "CustomMapView";
+public class MapViewModule extends ReactContextBaseJavaModule {
+    public MapViewModule(@Nonnull ReactApplicationContext reactContext) {
+        super(reactContext);
 
-    private final ReactApplicationContext reactApplicationContext;
-
-    public MapViewModule(ReactApplicationContext reactApplicationContext) {
-        this.reactApplicationContext = reactApplicationContext;
     }
 
     @Nonnull
     @Override
     public String getName() {
-        return REACT_CLASS;
+        return "MapViewModule";
     }
 
-    @Nonnull
-    @Override
-    protected ContainerView createViewInstance(@Nonnull ThemedReactContext reactContext) {
-        return new ContainerView(reactContext, reactApplicationContext);
+    @ReactMethod
+    public void focusPOI(int reactTag, String poiCode) {
+        UIManagerModule uiManager = getReactApplicationContext().getNativeModule(UIManagerModule.class);
+        uiManager.addUIBlock(nativeViewHierarchyManager -> {
+            View view = nativeViewHierarchyManager.resolveView(reactTag);
+            if (view instanceof ContainerView) {
+                View currentView = ((ContainerView) view).getCurrentView();
+                if (currentView instanceof MapView) {
+                    ((MapView) currentView).selectPOI(poiCode);
+                }
+            }
+        });
     }
 }

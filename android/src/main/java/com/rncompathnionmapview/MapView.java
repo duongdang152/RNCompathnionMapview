@@ -1059,6 +1059,10 @@ public class MapView extends ReactNativeBasedView implements
 //
 //    }
 
+    public void selectPOI(String poiCode) {
+        mapview.addMarkerToPoi(poiCode);
+    }
+
     private class HotspotItem {
         public Poi poi = null;
         public Category category = null;

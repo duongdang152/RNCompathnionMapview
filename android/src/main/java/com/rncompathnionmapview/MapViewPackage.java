@@ -15,14 +15,16 @@ public class MapViewPackage implements ReactPackage {
     @Nonnull
     @Override
     public List<NativeModule> createNativeModules(@Nonnull ReactApplicationContext reactContext) {
-        return Collections.emptyList();
+        List<NativeModule> modules = new ArrayList<>();
+        modules.add(new MapViewModule(reactContext));
+        return modules;
     }
 
     @Nonnull
     @Override
     public List<ViewManager> createViewManagers(@Nonnull ReactApplicationContext reactContext) {
         List<ViewManager> modules = new ArrayList<>();
-        modules.add(new MapViewModule(reactContext));
+        modules.add(new MapViewComponent(reactContext));
         return modules;
     }
 }

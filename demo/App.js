@@ -1,18 +1,20 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, requireNativeComponent} from 'react-native';
-
-let MapView = requireNativeComponent('CustomMapView');
+import {StyleSheet, Text, View, TouchableOpacity, requireNativeComponent, NativeModules, findNodeHandle} from 'react-native';
+import MapView from "./MapView"
 
 export default class App extends Component {
-  
-  selectPoi = () => {
 
+  selectPoi = () => {
+    this.mapview.focusPOI("hkchdgtbbeu-unit-room-1166580");
   }
 
   render() {
+
     return (
       <View style={styles.container}>
-        <MapView style={styles.mapView}/>
+        <MapView 
+          ref={ref => this.mapview = ref}
+        />
         <View style={styles.buttonsContainer}>
           <TouchableOpacity onPress={this.selectPoi}>
             <View style={styles.button}>
@@ -31,10 +33,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  mapView: {
-    flex: 1,
-    width: "100%"
   },
   buttonsContainer: {
     flexDirection: "row"

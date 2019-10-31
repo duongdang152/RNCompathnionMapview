@@ -17,6 +17,7 @@ import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 public class ContainerView extends ReactNativeBasedView {
     String curViewName;
+    private View currentView;
 
     public ContainerView(@NonNull Context context, ReactApplicationContext reactApplicationContext) {
         super(context, reactApplicationContext);
@@ -69,6 +70,10 @@ public class ContainerView extends ReactNativeBasedView {
         return false;
     }
 
+    public View getCurrentView() {
+        return currentView;
+    }
+
     private final BroadcastReceiver myRequestViewBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -102,6 +107,7 @@ public class ContainerView extends ReactNativeBasedView {
             if (v == null) {
                 return;
             }
+            currentView = v;
 
             reactContext
                     .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
