@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="base_host_url" translatable="false">https://hkch-staging.compathnion.com/</string>
+    <string name="venue_code" translatable="false">hkch</string>
+    <string name="client_id" translatable="false">0e8de7c60c1c</string>
+    <string name="client_secret" translatable="false">zlsYYDkWx6n9ph9BZPQVjlSU</string>
+    <string name="username" translatable="false">hkch@sagadigits.com</string>
+    <string name="password" translatable="false">G^sx4;(yEV</string>
+
+    <color name="venue_theme_color">#308047</color>
+</resources>

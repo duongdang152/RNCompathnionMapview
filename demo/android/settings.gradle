@@ -1,0 +1,5 @@
+rootProject.name = 'demo'
+
+include ':RNCompathnionMapview'
+project(':RNCompathnionMapview').projectDir = new File(rootProject.projectDir, '../node_modules/RNCompathnionMapview/android')
+include ':app'
