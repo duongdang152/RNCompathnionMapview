@@ -46,7 +46,8 @@ class MapView extends React.Component {
       PropTypes.array
     ]),
     onPOIClick: PropTypes.func,
-    onPOIUnclick: PropTypes.func
+    onPOIUnclick: PropTypes.func,
+    onLocationMessageReceive: PropTypes.func
   };
 
   componentDidMount() {
@@ -55,6 +56,10 @@ class MapView extends React.Component {
     });
     eventEmitter.addListener("onPOIUnclick", event => {
       if (this.props.onPOIUnclick) this.props.onPOIUnclick();
+    });
+    eventEmitter.addListener("onLocationMessageReceive", event => {
+      if (this.props.onLocationMessageReceive)
+        this.props.onLocationMessageReceive(event.title, event.message);
     });
   }
 

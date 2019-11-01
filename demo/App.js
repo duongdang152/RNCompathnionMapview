@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   requireNativeComponent,
   NativeModules,
-  findNodeHandle
+  findNodeHandle,
+  Alert
 } from "react-native";
 import MapView, { initMap } from "./MapView";
 
@@ -14,7 +15,9 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      poi: "None"
+      poi: "None",
+      locationTitle: null,
+      locationMessage: null
     };
   }
 
@@ -27,6 +30,26 @@ export default class App extends Component {
       "0e8de7c60c1c",
       "zlsYYDkWx6n9ph9BZPQVjlSU"
     );
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.locationMessage !== this.state.locationMessage &&
+      this.state.locationMessage !== null
+    ) {
+      Alert.alert(
+        this.state.locationTitle,
+        this.state.locationMessage,
+        [
+          {
+            text: "OK",
+            onPress: () =>
+              this.setState({ locationTitle: null, locationMessage: null })
+          }
+        ],
+        { cancelable: false }
+      );
+    }
   }
 
   selectPoi = () => {
@@ -54,6 +77,13 @@ export default class App extends Component {
     });
   };
 
+  onLocationMessageReceive = (title, message) => {
+    this.setState({
+      locationTitle: title,
+      locationMessage: message
+    });
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -61,6 +91,7 @@ export default class App extends Component {
           ref={ref => (this.mapview = ref)}
           onPOIClick={this.onPOIClick}
           onPOIUnclick={this.onPOIUnclick}
+          onLocationMessageReceive={this.onLocationMessageReceive}
         />
         <View style={styles.buttonsContainer}>
           <TouchableOpacity onPress={this.selectPoi}>
