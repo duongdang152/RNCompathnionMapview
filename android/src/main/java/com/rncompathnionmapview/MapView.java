@@ -17,6 +17,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.compathnion.sdk.CustomMapView;
+import com.compathnion.sdk.DataApi;
 import com.compathnion.sdk.LocaleHelper;
 import com.compathnion.sdk.LocationEngine;
 import com.compathnion.sdk.SDK;
@@ -103,7 +104,7 @@ public class MapView extends ReactNativeBasedView implements
         init();
     }
 
-    private void init(){
+    private void init() {
         SDKConfig config = new SDKConfig.Builder()
                 .withBaseHostUrl(getContext().getString(R.string.base_host_url))
                 .withVenueCode(getContext().getString(R.string.venue_code))
@@ -1059,9 +1060,24 @@ public class MapView extends ReactNativeBasedView implements
 //
 //    }
 
+    //START: Refactor these code
+
     public void selectPOI(String poiCode) {
         mapview.addMarkerToPoi(poiCode);
     }
+
+    public void unfocusPOI() {
+        mapview.removeCurrentPoiMarker();
+    }
+
+    public void demonstrateNavigation(String startPOI, String endPOI, boolean disabledPath) {
+        DataApi dataApi = SDK.getInstance().getDataApi();
+        Poi start = dataApi.getPoiByCode(startPOI);
+        Poi end = dataApi.getPoiByCode(endPOI);
+        mapview.demonstrateNavigation(start, end, disabledPath);
+    }
+
+    //END: Refactor these code
 
     private class HotspotItem {
         public Poi poi = null;

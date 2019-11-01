@@ -142,10 +142,10 @@ public class ContainerView extends ReactNativeBasedView {
 //                if (Preferences.getShouldShowTutorialPage(reactContext)) {
 //                    LocalBroadcastAction.requestView(reactContext, LocalBroadcastAction.VIEW_HOWTOUSE);
 //                } else {
-                    LocalBroadcastAction.requestView(reactContext, LocalBroadcastAction.VIEW_MAP);
-                    reactContext
-                            .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                            .emit(LocalBroadcastAction.JSEVENT_DATA_INIT_DONE, null);
+            LocalBroadcastAction.requestView(reactContext, LocalBroadcastAction.VIEW_MAP);
+            reactContext
+                    .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+                    .emit(LocalBroadcastAction.JSEVENT_DATA_INIT_DONE, null);
 //                }
 //            }
         }
