@@ -1,7 +1,5 @@
 package com.rncompathnionmapview;
 
-import com.compathnion.sdk.SDK;
-import com.compathnion.sdk.SDKConfig;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.SimpleViewManager;
 import com.facebook.react.uimanager.ThemedReactContext;
@@ -9,7 +7,7 @@ import com.facebook.react.uimanager.ThemedReactContext;
 import javax.annotation.Nonnull;
 
 public class MapViewComponent extends SimpleViewManager<ContainerView> {
-    private static final String REACT_CLASS = "CustomMapView";
+    private static final String REACT_CLASS = "MapViewComponent";
 
     private final ReactApplicationContext reactApplicationContext;
 

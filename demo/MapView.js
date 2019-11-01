@@ -3,12 +3,14 @@ import {
   StyleSheet,
   NativeModules,
   requireNativeComponent,
-  findNodeHandle
+  findNodeHandle,
+  NativeEventEmitter
 } from "react-native";
 import PropTypes from "prop-types";
 
-const MapViewComponent = requireNativeComponent("CustomMapView");
+const MapViewComponent = requireNativeComponent("MapViewComponent");
 const MapViewModule = NativeModules.MapViewModule;
+const eventEmitter = new NativeEventEmitter(NativeModules.CustomMapView);
 
 const styles = StyleSheet.create({
   mapviewContainer: { flex: 1, width: "100%" }
@@ -24,8 +26,23 @@ class MapView extends React.Component {
       PropTypes.object,
       PropTypes.number,
       PropTypes.array
-    ])
+    ]),
+    onPOIClick: PropTypes.func,
+    onPOIUnclick: PropTypes.func
   };
+
+  componentDidMount() {
+    eventEmitter.addListener("onPOIClick", event => {
+      if (this.props.onPOIClick) this.props.onPOIClick(event.poiCode);
+    });
+    eventEmitter.addListener("onPOIUnclick", event => {
+      if (this.props.onPOIUnclick) this.props.onPOIUnclick();
+    });
+  }
+
+  componentWillUnmount() {
+    eventEmitter.removeAllListeners();
+  }
 
   focusPOI = poiCode => {
     MapViewModule.focusPOI(findNodeHandle(this), poiCode);

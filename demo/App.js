@@ -11,6 +11,13 @@ import {
 import MapView from "./MapView";
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      poi: "None"
+    };
+  }
+
   selectPoi = () => {
     this.mapview.focusPOI("hkchdgtbbeu-unit-room-1166580");
   };
@@ -24,10 +31,26 @@ export default class App extends Component {
     );
   };
 
+  onPOIClick = poi => {
+    this.setState({
+      poi
+    });
+  };
+
+  onPOIUnclick = () => {
+    this.setState({
+      poi: "None"
+    });
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <MapView ref={ref => (this.mapview = ref)} />
+        <MapView
+          ref={ref => (this.mapview = ref)}
+          onPOIClick={this.onPOIClick}
+          onPOIUnclick={this.onPOIUnclick}
+        />
         <View style={styles.buttonsContainer}>
           <TouchableOpacity onPress={this.selectPoi}>
             <View style={styles.button}>
@@ -39,6 +62,9 @@ export default class App extends Component {
               <Text>Navigate P2P</Text>
             </View>
           </TouchableOpacity>
+          <View style={styles.poiContainer}>
+            <Text>POI: {this.state.poi}</Text>
+          </View>
         </View>
       </View>
     );
@@ -63,5 +89,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#bbb"
+  },
+  poiContainer: {
+    height: 50,
+    width: 160,
+    marginHorizontal: 8,
+    justifyContent: "center",
+    alignItems: "center"
   }
 });

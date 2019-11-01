@@ -24,7 +24,10 @@ import com.compathnion.sdk.SDK;
 import com.compathnion.sdk.SDKConfig;
 import com.compathnion.sdk.data.db.realm.Category;
 import com.compathnion.sdk.data.db.realm.Poi;
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.util.ArrayList;
@@ -264,74 +267,15 @@ public class MapView extends ReactNativeBasedView implements
     // BEGIN: CustomMapView.OnPoiClickListener
     @Override
     public void onPoiClick(Poi poi) {
-//        bottomSheetBehaviorHotspot.setState(BottomSheetBehavior.STATE_COLLAPSED);
-//        bottomSheetHotspot.setVisibility(GONE);
-//
-//        bottomSheetBehaviorPoi.setState(BottomSheetBehavior.STATE_COLLAPSED);
-//        bottomSheetPoi.setVisibility(View.VISIBLE);
-//
-//        presentPoiInfo(poi);
-//
-//
-//        final String categorySlugFocusAtStartForSavedLocation;
-//
-//        if (categoryFocusAtStart == null) {
-//            categorySlugFocusAtStartForSavedLocation = null;
-//        } else {
-//            categorySlugFocusAtStartForSavedLocation = categoryFocusAtStart.getSlug();
-//        }
-//
-//        MyBottomSheetButtonOnClickListener bottomSheetButtonOnClickListener = new MyBottomSheetButtonOnClickListener(
-//                poi, categorySlugFocusAtStartForSavedLocation
-//        );
-//
-//        btnSheetNavigate.setOnClickListener(bottomSheetButtonOnClickListener);
-//        imgSheetSaveLocation.setOnClickListener(bottomSheetButtonOnClickListener);
-//        imgSheetSharePoi.setOnClickListener(bottomSheetButtonOnClickListener);
-//        imgSheetCallPoi.setOnClickListener(bottomSheetButtonOnClickListener);
-//        btnCloseBottomSheet.setOnClickListener(bottomSheetButtonOnClickListener);
-//
-//        searchbox.setIconified(true);
-//        searchbox.clearFocus();
-//
-////        categorySearchView.setVisibility(View.GONE);
-//
-//        String imageUrl = "https://hkch-staging.compathnion.com/" + poi.getImageUrl();
-//
-//        if (!TextUtils.isEmpty(imageUrl)) {
-//            Picasso.get()
-//                    .load(imageUrl)
-//                    .placeholder(R.drawable.ha_logo)
-//                    .into(imgSheetPoi, new Callback() {
-//                        @Override
-//                        public void onSuccess() {
-//                            imgSheetPoi.setScaleType(ImageView.ScaleType.FIT_CENTER);
-//                            imgSheetPoi.setAdjustViewBounds(true);
-//                        }
-//
-//                        @Override
-//                        public void onError(Exception e) {
-//                        }
-//                    });
-//
-//        } else {
-//            imgSheetPoi.setImageDrawable(getResources().getDrawable(R.drawable.ha_logo));
-//            imgSheetPoi.setScaleType(ImageView.ScaleType.FIT_CENTER);
-//            imgSheetPoi.setAdjustViewBounds(true);
-//        }
-//
-//        // Clean focus-at-start state
-//        poiCodeFocusAtStart = null;
-//        categoryFocusAtStart = null;
+        WritableMap event = Arguments.createMap();
+        event.putString("poiCode", poi.getCode());
+        reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onPOIClick", event);
     }
 
     @Override
     public void onPoiUnclick() {
-//        bottomSheetPoi.setVisibility(View.GONE);
-//
-//        if (!isShowingCategorySearchView && !isShowingNavigation) {
-//            bottomSheetHotspot.setVisibility(VISIBLE);
-//        }
+        WritableMap event = Arguments.createMap();
+        reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onPOIUnclick", event);
     }
     // END: CustomMapView.OnPoiClickListener
 
@@ -1077,6 +1021,24 @@ public class MapView extends ReactNativeBasedView implements
         mapview.demonstrateNavigation(start, end, disabledPath);
     }
 
+    public void navigateFromCurrentLocation(String destinationPOI, boolean disabledPath) {
+        Poi destination = SDK.getInstance().getDataApi().getPoiByCode(destinationPOI);
+        mapview.navigateFromCurrentLocation(destination, disabledPath);
+    }
+
+    public interface OnPOIClickListener {
+        void callback(String poiCode);
+    }
+
+    public interface OnPOIUnclickListener {
+        void callback();
+    }
+
+    private OnPOIClickListener onPOIClickListener;
+
+    public void setOnPOIClickListener(OnPOIClickListener listener) {
+        this.onPOIClickListener = onPOIClickListener;
+    }
     //END: Refactor these code
 
     private class HotspotItem {

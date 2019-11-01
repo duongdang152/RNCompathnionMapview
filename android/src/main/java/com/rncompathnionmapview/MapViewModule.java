@@ -15,51 +15,46 @@ public class MapViewModule extends ReactContextBaseJavaModule {
         super(reactContext);
     }
 
+    private interface OnCallbackListener {
+        void callback(MapView mapView);
+    }
+
     @Nonnull
     @Override
     public String getName() {
         return "MapViewModule";
     }
 
-    @ReactMethod
-    public void focusPOI(int reactTag, String poiCode) {
+    private void getMapView(int reactTag, OnCallbackListener listener) {
         UIManagerModule uiManager = getReactApplicationContext().getNativeModule(UIManagerModule.class);
         uiManager.addUIBlock(nativeViewHierarchyManager -> {
             View view = nativeViewHierarchyManager.resolveView(reactTag);
             if (view instanceof ContainerView) {
                 View currentView = ((ContainerView) view).getCurrentView();
                 if (currentView instanceof MapView) {
-                    ((MapView) currentView).selectPOI(poiCode);
+                    listener.callback((MapView) currentView);
                 }
             }
         });
+    }
+
+    @ReactMethod
+    public void focusPOI(int reactTag, String poiCode) {
+        getMapView(reactTag, mapView -> mapView.selectPOI(poiCode));
     }
 
     @ReactMethod
     public void unfocusPOI(int reactTag) {
-        UIManagerModule uiManager = getReactApplicationContext().getNativeModule(UIManagerModule.class);
-        uiManager.addUIBlock(nativeViewHierarchyManager -> {
-            View view = nativeViewHierarchyManager.resolveView(reactTag);
-            if (view instanceof ContainerView) {
-                View currentView = ((ContainerView) view).getCurrentView();
-                if (currentView instanceof MapView) {
-                    ((MapView) currentView).unfocusPOI();
-                }
-            }
-        });
+        getMapView(reactTag, mapView -> mapView.unfocusPOI());
     }
 
     @ReactMethod
     public void navigatePOIToPOI(int reactTag, String startPOI, String destinationPOI, boolean disabledPath) {
-        UIManagerModule uiManager = getReactApplicationContext().getNativeModule(UIManagerModule.class);
-        uiManager.addUIBlock(nativeViewHierarchyManager -> {
-            View view = nativeViewHierarchyManager.resolveView(reactTag);
-            if (view instanceof ContainerView) {
-                View currentView = ((ContainerView) view).getCurrentView();
-                if (currentView instanceof MapView) {
-                    ((MapView) currentView).demonstrateNavigation(startPOI, destinationPOI, disabledPath);
-                }
-            }
-        });
+        getMapView(reactTag, mapView -> mapView.demonstrateNavigation(startPOI, destinationPOI, disabledPath));
+    }
+
+    @ReactMethod
+    public void navigateCurrentToPOI(int reactTag, String destinationPOI, boolean disabledPath) {
+        getMapView(reactTag, mapView -> mapView.navigateFromCurrentLocation(destinationPOI, disabledPath));
     }
 }
