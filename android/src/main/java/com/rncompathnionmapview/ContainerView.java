@@ -13,7 +13,6 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.compathnion.sdk.DataApi;
 import com.compathnion.sdk.SDK;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 public class ContainerView extends ReactNativeBasedView {
     String curViewName;
@@ -30,22 +29,11 @@ public class ContainerView extends ReactNativeBasedView {
         curViewName = null;
 
         IntentFilter filterRequestView = new IntentFilter(LocalBroadcastAction.ACTION_REQUESTVIEW);
-        IntentFilter filterRequestCloseView = new IntentFilter(LocalBroadcastAction.ACTION_REQUESTCLOSEVIEW);
 
         LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(reactContext);
-
         localBroadcastManager.registerReceiver(myRequestViewBroadcastReceiver, filterRequestView);
-        localBroadcastManager.registerReceiver(myRequestViewBroadcastReceiver, filterRequestCloseView);
 
-        // Load Splash Screen, and waiting for data initialization to finish
-        addView(new MapView(reactContext, reactApplicationContext));
         SDK.getInstance().getDataApi().addDataUpdateCallback(myDataApiDataUpdateCallback);
-
-        // Broadcast language change event to React Native side
-        // to help set header properly
-        reactContext
-                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit(LocalBroadcastAction.JSEVENT_LANGUAGE_CHANGE, "EN");
     }
 
     @Override
@@ -59,17 +47,6 @@ public class ContainerView extends ReactNativeBasedView {
         super.onViewDestroy();
     }
 
-    @Override
-    public boolean onBackPress() {
-//		if (curViewName != null) {
-//			return false;
-//		}
-//
-//		return true;
-
-        return false;
-    }
-
     public View getCurrentView() {
         return currentView;
     }
@@ -80,10 +57,6 @@ public class ContainerView extends ReactNativeBasedView {
             switch (intent.getAction()) {
                 case LocalBroadcastAction.ACTION_REQUESTVIEW:
                     onReceiveView(intent);
-                    break;
-
-                case LocalBroadcastAction.ACTION_REQUESTCLOSEVIEW:
-                    onReceiveCloseView(intent);
                     break;
             }
         }
@@ -108,21 +81,8 @@ public class ContainerView extends ReactNativeBasedView {
                 return;
             }
             currentView = v;
-
-            reactContext
-                    .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                    .emit(LocalBroadcastAction.JSEVENT_VIEW_CHANGE, viewName);
-
             curViewName = viewName;
-//            ContainerView.this.removeAllViews();
             ContainerView.this.addView(v);
-        }
-
-        private void onReceiveCloseView(Intent intent) {
-            curViewName = null;
-            removeAllViews();
-
-            LocalBroadcastAction.requestView(reactContext, LocalBroadcastAction.VIEW_HOME);
         }
     };
 
@@ -136,18 +96,7 @@ public class ContainerView extends ReactNativeBasedView {
         public void onFinished() {
             SDK.getInstance().getDataApi().removeDataUpdateCallback(myDataApiDataUpdateCallback);
 
-//            if (Preferences.getShouldShowActivationCodePage(reactContext)) {
-//                LocalBroadcastAction.requestView(reactContext, LocalBroadcastAction.VIEW_ACTIVATION);
-//            } else {
-//                if (Preferences.getShouldShowTutorialPage(reactContext)) {
-//                    LocalBroadcastAction.requestView(reactContext, LocalBroadcastAction.VIEW_HOWTOUSE);
-//                } else {
             LocalBroadcastAction.requestView(reactContext, LocalBroadcastAction.VIEW_MAP);
-            reactContext
-                    .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                    .emit(LocalBroadcastAction.JSEVENT_DATA_INIT_DONE, null);
-//                }
-//            }
         }
 
         @Override

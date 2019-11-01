@@ -74,11 +74,6 @@ public abstract class ReactNativeBasedView extends FrameLayout {
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
 
-        LocalBroadcastAction.registerBackpressListener(
-                reactContext,
-                myBackpressTriggeredBroadcastReceiver
-        );
-
         isViewPaused = false;
 
         lifecycleEventListener = new LifecycleEventListener() {
@@ -129,11 +124,6 @@ public abstract class ReactNativeBasedView extends FrameLayout {
     @Override
     public void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-
-        LocalBroadcastAction.unregisterBackpressListener(
-                reactContext,
-                myBackpressTriggeredBroadcastReceiver
-        );
 
         onViewDestroy();
     }
@@ -192,20 +182,6 @@ public abstract class ReactNativeBasedView extends FrameLayout {
     public void onRequestPermissionResult(int requestCode, String[] permissions, int[] grantResult) {
 
     }
-
-    private final BroadcastReceiver myBackpressTriggeredBroadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            // Address Checkmarx report: Improper Verification Of Intent By Broadcast Receiver
-            if (!intent.getAction().equals(LocalBroadcastAction.ACTION_BACKPRESS_TRIGGERED)) {
-                return;
-            }
-
-            if (onBackPress()) {
-                LocalBroadcastAction.requestBackpress(context);
-            }
-        }
-    };
 
     private final PermissionListener myPermissionListener = new PermissionListener() {
         @Override

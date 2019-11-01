@@ -8,7 +8,7 @@ import {
   NativeModules,
   findNodeHandle
 } from "react-native";
-import MapView from "./MapView";
+import MapView, { initMap } from "./MapView";
 
 export default class App extends Component {
   constructor(props) {
@@ -16,6 +16,17 @@ export default class App extends Component {
     this.state = {
       poi: "None"
     };
+  }
+
+  componentDidMount() {
+    initMap(
+      "https://hkch-staging.compathnion.com/",
+      "hkch",
+      "hkch@sagadigits.com",
+      "G^sx4;(yEV",
+      "0e8de7c60c1c",
+      "zlsYYDkWx6n9ph9BZPQVjlSU"
+    );
   }
 
   selectPoi = () => {

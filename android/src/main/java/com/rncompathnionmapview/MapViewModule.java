@@ -2,6 +2,8 @@ package com.rncompathnionmapview;
 
 import android.view.View;
 
+import com.compathnion.sdk.SDK;
+import com.compathnion.sdk.SDKConfig;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -36,6 +38,22 @@ public class MapViewModule extends ReactContextBaseJavaModule {
                 }
             }
         });
+    }
+
+    @ReactMethod
+    public void initMap(String baseHostUrl, String venueCode, String credUsername, String credPassword, String credClientId, String credClientSecret) {
+        SDKConfig config = new SDKConfig.Builder()
+                .withBaseHostUrl(baseHostUrl)
+                .withVenueCode(venueCode)
+                .withCredentials(
+                        credUsername,
+                        credPassword,
+                        credClientId,
+                        credClientSecret
+                )
+                .build();
+
+        SDK.initialize(getReactApplicationContext(), config);
     }
 
     @ReactMethod

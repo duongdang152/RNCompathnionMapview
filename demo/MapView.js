@@ -16,6 +16,24 @@ const styles = StyleSheet.create({
   mapviewContainer: { flex: 1, width: "100%" }
 });
 
+export function initMap(
+  baseHostUrl,
+  venueCode,
+  credUsername,
+  credPassword,
+  credClientId,
+  credClientSecret
+) {
+  MapViewModule.initMap(
+    baseHostUrl,
+    venueCode,
+    credUsername,
+    credPassword,
+    credClientId,
+    credClientSecret
+  );
+}
+
 class MapView extends React.Component {
   constructor(props) {
     super(props);
