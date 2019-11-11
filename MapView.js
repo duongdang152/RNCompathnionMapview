@@ -12,6 +12,10 @@ const MapViewComponent = requireNativeComponent("MapViewComponent");
 const MapViewModule = NativeModules.MapViewModule;
 const eventEmitter = new NativeEventEmitter(NativeModules.CustomMapView);
 
+var MapViewIOSComponent = requireNativeComponent('CPNMap', MapView);
+
+module.exports = MapView;
+
 const styles = StyleSheet.create({
   mapviewContainer: { flex: 1, width: "100%" }
 });
@@ -94,7 +98,11 @@ class MapView extends React.Component {
 
   render() {
     return (
-      <MapViewComponent
+      // <MapViewComponent
+      //   style={[styles.mapviewContainer, { ...this.props.style }]}
+      // />
+
+      <MapViewIOSComponent
         style={[styles.mapviewContainer, { ...this.props.style }]}
       />
     );
