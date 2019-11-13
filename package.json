@@ -22,5 +22,9 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitpub.compathnion.com:IPS/sdk/rn-map-view.git"
   }
 }
