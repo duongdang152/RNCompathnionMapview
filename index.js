@@ -1,1 +1,1 @@
-export { default } from "./MapView";
+export { default, initMap } from "./MapView";
