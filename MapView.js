@@ -75,11 +75,19 @@ class MapView extends React.Component {
     MapViewModule.unfocusPOI(findNodeHandle(this));
   };
 
-  navigatePOIToPOI = (startPOI, endPOI, disabledPath) => {
+  navigatePOIToPOI = (startPOI, endPOI, disabledPath = false) => {
     MapViewModule.navigatePOIToPOI(
       findNodeHandle(this),
       startPOI,
       endPOI,
+      disabledPath
+    );
+  };
+
+  navigateCurrentToPOI = (destinationPOI, disabledPath = false) => {
+    MapViewModule.navigateCurrentToPOI(
+      findNodeHandle(this),
+      destinationPOI,
       disabledPath
     );
   };
