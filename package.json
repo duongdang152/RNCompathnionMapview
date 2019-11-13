@@ -8,7 +8,7 @@
     "preinstall": "bash setup-ssh.sh",
     "postinstall": "bash cleanup-ssh.sh"
   },
-  "dependencies": {
+  "peerDependencies": {
     "react": "16.8.3",
     "react-native": "0.59.1"
   },
