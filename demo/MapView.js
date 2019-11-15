@@ -8,31 +8,33 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 
+console.log("TEST: ", NativeModules)
+
 const MapViewComponent = requireNativeComponent("MapViewComponent");
-const MapViewModule = NativeModules.MapViewModule;
-const eventEmitter = new NativeEventEmitter(NativeModules.CustomMapView);
+// const MapViewModule = NativeModules.MapViewModule;
+// const eventEmitter = new NativeEventEmitter(NativeModules.CustomMapView);
 
 const styles = StyleSheet.create({
   mapviewContainer: { flex: 1, width: "100%" }
 });
 
-export function initMap(
-  baseHostUrl,
-  venueCode,
-  credUsername,
-  credPassword,
-  credClientId,
-  credClientSecret
-) {
-  MapViewModule.initMap(
-    baseHostUrl,
-    venueCode,
-    credUsername,
-    credPassword,
-    credClientId,
-    credClientSecret
-  );
-}
+// export function initMap(
+//   baseHostUrl,
+//   venueCode,
+//   credUsername,
+//   credPassword,
+//   credClientId,
+//   credClientSecret
+// ) {
+//   MapViewModule.initMap(
+//     baseHostUrl,
+//     venueCode,
+//     credUsername,
+//     credPassword,
+//     credClientId,
+//     credClientSecret
+//   );
+// }
 
 class MapView extends React.Component {
   constructor(props) {

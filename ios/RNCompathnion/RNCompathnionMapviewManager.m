@@ -11,7 +11,7 @@
     BOOL _shouldStartLoad;
 }
 
-RCT_EXPORT_MODULE()
+RCT_EXPORT_MODULE(MapViewComponent)
 
 - (UIView *)view
 {
