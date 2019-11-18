@@ -374,6 +374,18 @@ SWIFT_CLASS("_TtC4Maps7CTLPath")
 /// Path Request
 SWIFT_CLASS("_TtC4Maps14CTLPathRequest")
 @interface CTLPathRequest : NSObject
+/// \param origin CTLPOI or CTLLocation
+///
+/// \param destination CTLPOI or CTLLocation
+///
+/// \param disabled path option for a pwd user
+///
+- (nonnull instancetype)initWithOrigin:(id _Nonnull)origin destination:(id _Nonnull)destination disabled:(BOOL)disabled OBJC_DESIGNATED_INITIALIZER;
+/// \param path CTLPath - it must contain an origin and destination
+///
+/// \param disabled path option for a pwd user
+///
+- (nonnull instancetype)initWithPath:(CTLPath * _Nonnull)path disabled:(BOOL)disabled OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -527,6 +539,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (NSString * _Nonnull)MAP_FOCUS_POI_ORIGIN_NOTIFICATION SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull MAP_FOCUS_POI_DESTINATION_NOTIFICATION;)
 + (NSString * _Nonnull)MAP_FOCUS_POI_DESTINATION_NOTIFICATION SWIFT_WARN_UNUSED_RESULT;
+/// Post this notification to focus on a POI by including a CTLPOI id in the notification
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull MAP_FOCUS_POI_BY_ID_NOTIFICATION;)
++ (NSString * _Nonnull)MAP_FOCUS_POI_BY_ID_NOTIFICATION SWIFT_WARN_UNUSED_RESULT;
+/// Post this notification to focus on a POI by including a CTLPOI object in the notification
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull MAP_UN_FOCUS_POI_NOTIFICATION;)
++ (NSString * _Nonnull)MAP_UN_FOCUS_POI_NOTIFICATION SWIFT_WARN_UNUSED_RESULT;
 /// Post this notification to zoom out, focus, and zoom in on a POI by including a CTLPOI object in the notification
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull MAP_ZOOM_FOCUS_POI_NOTIFICATION;)
 + (NSString * _Nonnull)MAP_ZOOM_FOCUS_POI_NOTIFICATION SWIFT_WARN_UNUSED_RESULT;
@@ -703,7 +721,11 @@ SWIFT_CLASS("_TtC4Maps4Maps")
 - (void)viewWillDisappear:(BOOL)animated;
 - (void)changeFloorWithLevel:(CTLLevel * _Nonnull)level;
 - (void)focusWithPoi:(CTLPOI * _Nonnull)poi;
+- (void)focusWithPoiID:(NSString * _Nonnull)poiID;
+- (void)unFocusPOI;
 - (void)startNavigationWithRequest:(CTLPathRequest * _Nonnull)request;
+- (void)startNavigationWithStartPOI:(NSString * _Nonnull)startPOI endPOI:(NSString * _Nonnull)endPOI disablePath:(BOOL)disablePath;
+- (void)startNavigationFromCurrentLocationWithDestinationPOI:(NSString * _Nonnull)destinationPOI disablePath:(BOOL)disablePath;
 - (void)stopNavigation;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
@@ -808,6 +830,12 @@ SWIFT_CLASS("_TtC4Maps8Settings")
 + (void)setUserLocationColorWithColor:(UIColor * _Nonnull)color;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
+
+
+
+
 
 
 
@@ -1201,6 +1229,18 @@ SWIFT_CLASS("_TtC4Maps7CTLPath")
 /// Path Request
 SWIFT_CLASS("_TtC4Maps14CTLPathRequest")
 @interface CTLPathRequest : NSObject
+/// \param origin CTLPOI or CTLLocation
+///
+/// \param destination CTLPOI or CTLLocation
+///
+/// \param disabled path option for a pwd user
+///
+- (nonnull instancetype)initWithOrigin:(id _Nonnull)origin destination:(id _Nonnull)destination disabled:(BOOL)disabled OBJC_DESIGNATED_INITIALIZER;
+/// \param path CTLPath - it must contain an origin and destination
+///
+/// \param disabled path option for a pwd user
+///
+- (nonnull instancetype)initWithPath:(CTLPath * _Nonnull)path disabled:(BOOL)disabled OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
@@ -1354,6 +1394,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 + (NSString * _Nonnull)MAP_FOCUS_POI_ORIGIN_NOTIFICATION SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull MAP_FOCUS_POI_DESTINATION_NOTIFICATION;)
 + (NSString * _Nonnull)MAP_FOCUS_POI_DESTINATION_NOTIFICATION SWIFT_WARN_UNUSED_RESULT;
+/// Post this notification to focus on a POI by including a CTLPOI id in the notification
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull MAP_FOCUS_POI_BY_ID_NOTIFICATION;)
++ (NSString * _Nonnull)MAP_FOCUS_POI_BY_ID_NOTIFICATION SWIFT_WARN_UNUSED_RESULT;
+/// Post this notification to focus on a POI by including a CTLPOI object in the notification
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull MAP_UN_FOCUS_POI_NOTIFICATION;)
++ (NSString * _Nonnull)MAP_UN_FOCUS_POI_NOTIFICATION SWIFT_WARN_UNUSED_RESULT;
 /// Post this notification to zoom out, focus, and zoom in on a POI by including a CTLPOI object in the notification
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull MAP_ZOOM_FOCUS_POI_NOTIFICATION;)
 + (NSString * _Nonnull)MAP_ZOOM_FOCUS_POI_NOTIFICATION SWIFT_WARN_UNUSED_RESULT;
@@ -1530,7 +1576,11 @@ SWIFT_CLASS("_TtC4Maps4Maps")
 - (void)viewWillDisappear:(BOOL)animated;
 - (void)changeFloorWithLevel:(CTLLevel * _Nonnull)level;
 - (void)focusWithPoi:(CTLPOI * _Nonnull)poi;
+- (void)focusWithPoiID:(NSString * _Nonnull)poiID;
+- (void)unFocusPOI;
 - (void)startNavigationWithRequest:(CTLPathRequest * _Nonnull)request;
+- (void)startNavigationWithStartPOI:(NSString * _Nonnull)startPOI endPOI:(NSString * _Nonnull)endPOI disablePath:(BOOL)disablePath;
+- (void)startNavigationFromCurrentLocationWithDestinationPOI:(NSString * _Nonnull)destinationPOI disablePath:(BOOL)disablePath;
 - (void)stopNavigation;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
@@ -1635,6 +1685,12 @@ SWIFT_CLASS("_TtC4Maps8Settings")
 + (void)setUserLocationColorWithColor:(UIColor * _Nonnull)color;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
+
+
+
+
 
 
 

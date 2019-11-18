@@ -22,14 +22,14 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    // initMap(
-    //   "https://hkch-staging.compathnion.com/",
-    //   "hkch",
-    //   "hkch@sagadigits.com",
-    //   "G^sx4;(yEV",
-    //   "0e8de7c60c1c",
-    //   "zlsYYDkWx6n9ph9BZPQVjlSU"
-    // );
+    initMap(
+      "https://hkch-staging.compathnion.com/",
+      "hkch",
+      "hkch@sagadigits.com",
+      "G^sx4;(yEV",
+      "0e8de7c60c1c",
+      "zlsYYDkWx6n9ph9BZPQVjlSU"
+    );
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -80,16 +80,44 @@ export default class App extends Component {
     });
   };
 
-  render() {
-    // <MapView
-        //   ref={ref => (this.mapview = ref)}
-        //   onPOIClick={this.onPOIClick}
-        //   onPOIUnclick={this.onPOIUnclick}
-        //   onLocationMessageReceive={this.onLocationMessageReceive}
-        // />
+  // render() {
+  //   // <MapView
+  //       //   ref={ref => (this.mapview = ref)}
+  //       //   onPOIClick={this.onPOIClick}
+  //       //   onPOIUnclick={this.onPOIUnclick}
+  //       //   onLocationMessageReceive={this.onLocationMessageReceive}
+  //       // />
+  //   return (
+  //     <View style={styles.container}>
+  //       <MapView/>
+  //       <View style={styles.buttonsContainer}>
+  //         <TouchableOpacity onPress={this.selectPoi}>
+  //           <View style={styles.button}>
+  //             <Text>POI</Text>
+  //           </View>
+  //         </TouchableOpacity>
+  //         <TouchableOpacity onPress={this.navigateP2P}>
+  //           <View style={styles.button}>
+  //             <Text>Navigate P2P</Text>
+  //           </View>
+  //         </TouchableOpacity>
+  //         <View style={styles.poiContainer}>
+  //           <Text>POI: {this.state.poi}</Text>
+  //         </View>
+  //       </View>
+  //     </View>
+  //   );
+  // }
+
+    render() {
     return (
       <View style={styles.container}>
-        <MapView/>
+        <MapView
+          ref={ref => (this.mapview = ref)}
+          onPOIClick={this.onPOIClick}
+          onPOIUnclick={this.onPOIUnclick}
+          onLocationMessageReceive={this.onLocationMessageReceive}
+        />
         <View style={styles.buttonsContainer}>
           <TouchableOpacity onPress={this.selectPoi}>
             <View style={styles.button}>
@@ -108,6 +136,7 @@ export default class App extends Component {
       </View>
     );
   }
+
 }
 
 const styles = StyleSheet.create({

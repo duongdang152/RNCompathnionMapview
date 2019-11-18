@@ -1,5 +1,7 @@
 #import <UIKit/UIKit.h>
 #import <Maps/Maps.h>
+#import <React/RCTBridgeModule.h>
+#import <React/RCTView.h>
 //@class CPNMapView, CPNPOI, CPNPathRequest, CPNLevel, CPNSection, CPNConfig;
 //
 //extern NSString *const RCTJSNavigationScheme;
@@ -16,9 +18,14 @@
 //
 //@end
 
-@interface RNCompathnionMap : UIView
+@interface RNCompathnionMap : RCTView <RCTBridgeModule>
 
 @property (nullable, strong, nonatomic) Maps *mapViewcontroller;
-//@property (nonatomic, weak) id<CPNMapsDelegate> delegate;
+
+
+-(void)focusPOI:(NSString *_Nullable)poiCode;
+-(void)unFocusPOI;
+-(void)navigatePOIToPOI:(NSString *_Nonnull)startPOI endPOI:(NSString *_Nullable)endPOI disabledPath:(BOOL) disabledPath;
+-(void)navigateCurrentToPOI:(NSString *_Nullable)destinationPOI disabledPath:(BOOL) disabledPath;
 
 @end

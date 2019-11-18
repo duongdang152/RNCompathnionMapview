@@ -1,3 +1,4 @@
+#import <React/RCTBridgeModule.h>
 #import <React/RCTViewManager.h>
 
 @class RNCompathnionMapManager;
@@ -17,8 +18,7 @@
 
 @end
 
-@interface RNCompathnionMapManager: NSObject
+@interface RNCompathnionMapManager: NSObject <RCTBridgeModule>
 
-- (void)setup;
 
 @end

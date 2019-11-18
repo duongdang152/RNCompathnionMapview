@@ -1,6 +1,7 @@
-#import <React/RCTViewManager.h>
 #import "RNCompathnionMapManager.h"
 #import "RNCompathnionMap.h"
+
+
 
 @interface RNCompathnionMapviewManager : RCTViewManager
 @end
@@ -17,11 +18,6 @@ RCT_EXPORT_MODULE(MapViewComponent)
 {
     RNCompathnionMap *mapView = [[RNCompathnionMap alloc] init];
     return mapView;
-}
-
-RCT_EXPORT_METHOD(setupWithConfig:(SDKConfig *)config)
-{
-    [MapManager.shared setupWithConfig:config];
 }
 
 @end
