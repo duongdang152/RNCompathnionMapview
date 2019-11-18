@@ -3,7 +3,7 @@
 ## Installation
 
 ```
-npm install git+http://gitlab+deploy-token-1:M5zxNiMUEgz4wo7hNe-L@gitpub.compathnion.com/IPS/sdk/rn-map-view.git
+npm install git+http://gitlab+deploy-token-2:xwZZxey6Mzu3e18S1x__@gitpub.compathnion.com/IPS/sdk/rn-map-view.git
 react-native link RNCompathnionMapview
 ```
 
