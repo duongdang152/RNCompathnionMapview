@@ -81,35 +81,6 @@ export default class App extends Component {
     });
   };
 
-  // render() {
-  //   // <MapView
-  //       //   ref={ref => (this.mapview = ref)}
-  //       //   onPOIClick={this.onPOIClick}
-  //       //   onPOIUnclick={this.onPOIUnclick}
-  //       //   onLocationMessageReceive={this.onLocationMessageReceive}
-  //       // />
-  //   return (
-  //     <View style={styles.container}>
-  //       <MapView/>
-  //       <View style={styles.buttonsContainer}>
-  //         <TouchableOpacity onPress={this.selectPoi}>
-  //           <View style={styles.button}>
-  //             <Text>POI</Text>
-  //           </View>
-  //         </TouchableOpacity>
-  //         <TouchableOpacity onPress={this.navigateP2P}>
-  //           <View style={styles.button}>
-  //             <Text>Navigate P2P</Text>
-  //           </View>
-  //         </TouchableOpacity>
-  //         <View style={styles.poiContainer}>
-  //           <Text>POI: {this.state.poi}</Text>
-  //         </View>
-  //       </View>
-  //     </View>
-  //   );
-  // }
-
     render() {
     return (
       <View style={styles.container}>
