@@ -23,13 +23,14 @@ export default class App extends Component {
 
   componentDidMount() {
     initMap(
-      "https://hkch-staging.compathnion.com/",
-      "hkch",
-      "hkch@sagadigits.com",
-      "G^sx4;(yEV",
-      "0e8de7c60c1c",
-      "zlsYYDkWx6n9ph9BZPQVjlSU"
+      "https://hkl.compathnion.com",
+      "charter",
+      "hklapp@sagadigits.com",
+      "8@yd@KPh7J",
+      "f22e49812123",
+      "3HSvkUQxaC5u2twV89LnNnqo"
     );
+
   }
 
   componentDidUpdate(prevProps, prevState) {

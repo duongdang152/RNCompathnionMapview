@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		37755269237B0D7E00B5BC02 /* Maps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37755267237B0D7E00B5BC02 /* Maps.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		3775526A237B0D7E00B5BC02 /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37755268237B0D7E00B5BC02 /* Mapbox.framework */; };
+		37B16F63238292A900011EE6 /* RNMapEventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B16F62238292A900011EE6 /* RNMapEventEmitter.m */; };
 		8BA6A659237A4B36000C3ED8 /* RNCompathnionMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6A658237A4B36000C3ED8 /* RNCompathnionMapManager.m */; };
 		8BA6A65C237A4CEB000C3ED8 /* RNCompathnionMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6A65B237A4CEB000C3ED8 /* RNCompathnionMap.m */; };
 		8BA6A660237A4D7A000C3ED8 /* UIView+Parent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6A65F237A4D7A000C3ED8 /* UIView+Parent.m */; };
@@ -31,6 +32,8 @@
 		134814201AA4EA6300B7C361 /* libRNCompathnionMapview.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNCompathnionMapview.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		37755267237B0D7E00B5BC02 /* Maps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Maps.framework; path = Frameworks/Maps.framework; sourceTree = "<group>"; };
 		37755268237B0D7E00B5BC02 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox.framework; path = Frameworks/Mapbox.framework; sourceTree = "<group>"; };
+		37B16F61238292A900011EE6 /* RNMapEventEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNMapEventEmitter.h; sourceTree = "<group>"; };
+		37B16F62238292A900011EE6 /* RNMapEventEmitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNMapEventEmitter.m; sourceTree = "<group>"; };
 		8BA6A657237A4AA7000C3ED8 /* RNCompathnionMapManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNCompathnionMapManager.h; sourceTree = "<group>"; };
 		8BA6A658237A4B36000C3ED8 /* RNCompathnionMapManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNCompathnionMapManager.m; sourceTree = "<group>"; };
 		8BA6A65A237A4C95000C3ED8 /* RNCompathnionMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNCompathnionMap.h; sourceTree = "<group>"; };
@@ -85,6 +88,8 @@
 			children = (
 				8BA6A657237A4AA7000C3ED8 /* RNCompathnionMapManager.h */,
 				8BA6A658237A4B36000C3ED8 /* RNCompathnionMapManager.m */,
+				37B16F61238292A900011EE6 /* RNMapEventEmitter.h */,
+				37B16F62238292A900011EE6 /* RNMapEventEmitter.m */,
 				8BA6A65A237A4C95000C3ED8 /* RNCompathnionMap.h */,
 				8BA6A65B237A4CEB000C3ED8 /* RNCompathnionMap.m */,
 				8BA6A65D237A4D1E000C3ED8 /* RNCompathnionMapviewManager.h */,
@@ -153,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BA6A662237A4DA0000C3ED8 /* RNCompathnionMapviewManager.m in Sources */,
+				37B16F63238292A900011EE6 /* RNMapEventEmitter.m in Sources */,
 				8BA6A660237A4D7A000C3ED8 /* UIView+Parent.m in Sources */,
 				8BA6A659237A4B36000C3ED8 /* RNCompathnionMapManager.m in Sources */,
 				8BA6A65C237A4CEB000C3ED8 /* RNCompathnionMap.m in Sources */,

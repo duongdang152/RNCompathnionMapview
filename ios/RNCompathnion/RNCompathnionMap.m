@@ -2,8 +2,9 @@
 #import <React/RCTView.h>
 #import "UIView+Parent.h"
 #import <Maps/Maps.h>
+#import "RNMapEventEmitter.h"
 
-@interface RNCompathnionMap () //<MapManagerDelegate>
+@interface RNCompathnionMap () <MapsDelegate>
 
 @property (nonatomic, strong) MapManager *mapManager;
 @property (nonatomic) BOOL didEmbeded;
@@ -40,12 +41,21 @@
         return;
     }
     Maps *map = [Maps new];
+    map.delegate = self;
     _mapViewcontroller = map;
     [parentVc addChildViewController:self.mapViewcontroller];
     [self addSubview:self.mapViewcontroller.view];
     self.mapViewcontroller.view.frame = self.bounds;
     [self.mapViewcontroller didMoveToParentViewController:parentVc];
     _didEmbeded = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didSelectPOI:)
+                                                 name:MapConstants.MAP_DID_SELECT_POI_NOTIFICATION
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didDeselectPOI:)
+                                                 name:MapConstants.MAP_DID_DESELECT_POI_NOTIFICATION
+                                               object:nil];
 }
 
 
@@ -66,6 +76,19 @@
 - (void)navigateCurrentToPOI:(NSString *)destinationPOI disabledPath:(BOOL)disabledPath {
     [self.mapViewcontroller startNavigationFromCurrentLocationWithDestinationPOI:destinationPOI
                                                                      disablePath:disabledPath];
+}
+
+
+- (void)didSelectPOI:(NSNotification *)notification
+{
+    NSString *poiID = (NSString *)notification.object;
+    [RNMapEventEmitter mapViewDidSelectPoi:poiID];
+}
+
+- (void)didDeselectPOI:(NSNotification *)notification
+{
+    NSString *poiID = (NSString *)notification.object;
+    [RNMapEventEmitter mapViewDidDeselectPoi:poiID];
 }
 
 @end
