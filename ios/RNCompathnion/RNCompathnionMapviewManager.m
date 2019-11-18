@@ -1,6 +1,6 @@
 #import "RNCompathnionMapManager.h"
 #import "RNCompathnionMap.h"
-
+#import <React/RCTUIManager.h>
 
 
 @interface RNCompathnionMapviewManager : RCTViewManager
@@ -19,5 +19,6 @@ RCT_EXPORT_MODULE(MapViewComponent)
     RNCompathnionMap *mapView = [[RNCompathnionMap alloc] init];
     return mapView;
 }
+
 
 @end

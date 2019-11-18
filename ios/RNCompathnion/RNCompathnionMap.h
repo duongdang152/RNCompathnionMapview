@@ -18,10 +18,9 @@
 //
 //@end
 
-@interface RNCompathnionMap : RCTView <RCTBridgeModule>
+@interface RNCompathnionMap : RCTView
 
 @property (nullable, strong, nonatomic) Maps *mapViewcontroller;
-
 
 -(void)focusPOI:(NSString *_Nullable)poiCode;
 -(void)unFocusPOI;
