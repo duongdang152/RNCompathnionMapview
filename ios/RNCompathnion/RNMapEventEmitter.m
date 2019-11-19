@@ -52,17 +52,16 @@ RCT_EXPORT_MODULE(CustomMapView);
 # pragma mark Public
 
 + (void)mapViewDidDeselectPoi:(NSString *)poiID {
-    [self postNotificationName:@"onPOIClick" withPayload:poiID];
+    [self postNotificationName:konPOIUnClick withPayload:nil];
 }
 
 + (void)mapViewDidSelectPoi:(NSString *)poiID {
-     [self postNotificationName:@"onPOIUnclick" withPayload:poiID];
+    [self postNotificationName:konPOIClick withPayload:@{@"poiCode": poiID}];
 }
 
 # pragma mark Private
 
-+ (void)postNotificationName:(NSString *)name withPayload:(NSObject *)object {
-  NSDictionary<NSString *, id> *payload = @{@"payload": object};
++ (void)postNotificationName:(NSString *)name withPayload:(NSDictionary<NSString *, id>  *)payload {
   
   [[NSNotificationCenter defaultCenter] postNotificationName:name
                                                       object:self
@@ -70,7 +69,8 @@ RCT_EXPORT_MODULE(CustomMapView);
 }
 
 - (void)handleNotification:(NSNotification *)notification {
-  [self sendEventWithName:notification.name body:notification.userInfo];
+    
+    [self sendEventWithName:notification.name body:notification.userInfo];
 }
 
 @end

@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		5g9XrEYvhnFjQh6TtmGsp+9GTB8=
+		LqatOPNMid1bQEiw9Fvpi5QbgKU=
 		</data>
 		<key>CTLDataModel.mom</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Headers/Maps-Swift.h</key>
 		<data>
-		kzBIUNag0cP7nmcC1qTYjthkKQg=
+		TDTNZBngPMkq1sCDp7jkOaBGq+Q=
 		</data>
 		<key>Headers/Maps.h</key>
 		<data>
@@ -42,47 +42,47 @@
 		</data>
 		<key>MapController.nib/objects-11.0+.nib</key>
 		<data>
-		GEZbnOg1QA1CojOR91ihITiBm8g=
+		m4nIfCfswAPoB36hGOarR04o3mU=
 		</data>
 		<key>MapController.nib/objects-13.0+.nib</key>
 		<data>
-		AAn6KtjhGsk5kNARNkUBeKlzgHk=
+		b39NdxBMHVjiqCGe4aeIIIcu9Vs=
 		</data>
 		<key>MapController.nib/runtime.nib</key>
 		<data>
-		Fab9Uc9XP7glbGioe+uE9qLFO8s=
+		bE4K590yunIQT9n1U9GW2QBnieA=
 		</data>
 		<key>Modules/Maps.swiftmodule/i386-apple-ios-simulator.swiftdoc</key>
 		<data>
-		ndlUFjHFSlcRZcZl+PqjdQPGUEU=
+		tQ4Qoqybc4x2Ot3CN/RtG7ijw58=
 		</data>
 		<key>Modules/Maps.swiftmodule/i386-apple-ios-simulator.swiftmodule</key>
 		<data>
-		vz73OM1TdvbgwhIegZDzi9Gf+sk=
+		+H7i04T2m2LnSQD873Gdh7FW9kQ=
 		</data>
 		<key>Modules/Maps.swiftmodule/i386.swiftdoc</key>
 		<data>
-		ndlUFjHFSlcRZcZl+PqjdQPGUEU=
+		tQ4Qoqybc4x2Ot3CN/RtG7ijw58=
 		</data>
 		<key>Modules/Maps.swiftmodule/i386.swiftmodule</key>
 		<data>
-		vz73OM1TdvbgwhIegZDzi9Gf+sk=
+		+H7i04T2m2LnSQD873Gdh7FW9kQ=
 		</data>
 		<key>Modules/Maps.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		bjDi5YCqF3qq1O1hGD+6jMcx88U=
+		xsbR84VGms7gozGoWTW10bMB12o=
 		</data>
 		<key>Modules/Maps.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		INyd3g56ZryoX5ydf9EAciUTcLc=
+		TvbIXH5+wMGjr4Xvn56XmI3uwEQ=
 		</data>
 		<key>Modules/Maps.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		bjDi5YCqF3qq1O1hGD+6jMcx88U=
+		xsbR84VGms7gozGoWTW10bMB12o=
 		</data>
 		<key>Modules/Maps.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		INyd3g56ZryoX5ydf9EAciUTcLc=
+		TvbIXH5+wMGjr4Xvn56XmI3uwEQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -90,15 +90,15 @@
 		</data>
 		<key>PreviewViewController.nib/objects-11.0+.nib</key>
 		<data>
-		99qeDPwTCP/KKDelYmGwjosSFCY=
+		A37s3ViaH+GL5Z6fscnE4WsvvdU=
 		</data>
 		<key>PreviewViewController.nib/objects-13.0+.nib</key>
 		<data>
-		sOmLsLtLPeCX43D9oT+s37Tmw0k=
+		7pZyL5qGz51Chr83KfHblY2vfBU=
 		</data>
 		<key>PreviewViewController.nib/runtime.nib</key>
 		<data>
-		KsJ2EkUgPEcD7Rq+G+0VEO1X2bs=
+		4gJ4akJxypeWsoke07CDGCRrL9M=
 		</data>
 		<key>empty-map.json</key>
 		<data>
@@ -142,11 +142,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			5g9XrEYvhnFjQh6TtmGsp+9GTB8=
+			LqatOPNMid1bQEiw9Fvpi5QbgKU=
 			</data>
 			<key>hash2</key>
 			<data>
-			AuJj+dZXtWWPBivxUGRyrb+J4h1ADURZFyZdzDW7pVo=
+			yFHnekKQIPmCwvFADDMdZiu+q1+0XyrW2kSRk4XOfOo=
 			</data>
 		</dict>
 		<key>CTLDataModel.mom</key>
@@ -208,11 +208,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			kzBIUNag0cP7nmcC1qTYjthkKQg=
+			TDTNZBngPMkq1sCDp7jkOaBGq+Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			cU8DvEw5UlUA30kthY90hM+ri6WUJnMhyTNcb2j5TqU=
+			uV88+dNsHaVvoNMjphtLzFo59acvQTosul/41/Ko5OY=
 			</data>
 		</dict>
 		<key>Headers/Maps.h</key>
@@ -230,121 +230,121 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			GEZbnOg1QA1CojOR91ihITiBm8g=
+			m4nIfCfswAPoB36hGOarR04o3mU=
 			</data>
 			<key>hash2</key>
 			<data>
-			I+pLpKLNv7w175RaOSuVJv+wFe2V8qXEX/bOiqzFIMk=
+			ZfQI8E+pOQ8L6nKiMYrtQErSdq3gaHXpDCUfwG/2k64=
 			</data>
 		</dict>
 		<key>MapController.nib/objects-13.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			AAn6KtjhGsk5kNARNkUBeKlzgHk=
+			b39NdxBMHVjiqCGe4aeIIIcu9Vs=
 			</data>
 			<key>hash2</key>
 			<data>
-			2uJi2WfWWvr9nojglkGBm8of33zVtnpWjciWPnB6/Yc=
+			VZ1yGXdqCC1l++3nj/TeTHRNdCJkWggC+Y70j4TuE4o=
 			</data>
 		</dict>
 		<key>MapController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Fab9Uc9XP7glbGioe+uE9qLFO8s=
+			bE4K590yunIQT9n1U9GW2QBnieA=
 			</data>
 			<key>hash2</key>
 			<data>
-			ldSyOeLzVvowX5y2uLLSojJ4AXOb2OpydI8teKM0M/w=
+			FWtaX7s324WRHFKbf0fAXRvRW10KpmIL8G8p+Ww2Ux8=
 			</data>
 		</dict>
 		<key>Modules/Maps.swiftmodule/i386-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ndlUFjHFSlcRZcZl+PqjdQPGUEU=
+			tQ4Qoqybc4x2Ot3CN/RtG7ijw58=
 			</data>
 			<key>hash2</key>
 			<data>
-			vyWvJJMXqtRkYDOTC52ybjFWQi0Q6Tm18rYrB4SVr0U=
+			leGKEXod+Zp8G0mcwLuluKAq0VnDg6Jv4N1Cs+wJYko=
 			</data>
 		</dict>
 		<key>Modules/Maps.swiftmodule/i386-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			vz73OM1TdvbgwhIegZDzi9Gf+sk=
+			+H7i04T2m2LnSQD873Gdh7FW9kQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			FjQMnf8rrPddZuF90XuLTr6zff6yZiJm6oedGIObLBs=
+			m5YVjx0wQ2V6epNpnzUq1+2+lsZwv43u0h+xl6XNrcg=
 			</data>
 		</dict>
 		<key>Modules/Maps.swiftmodule/i386.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ndlUFjHFSlcRZcZl+PqjdQPGUEU=
+			tQ4Qoqybc4x2Ot3CN/RtG7ijw58=
 			</data>
 			<key>hash2</key>
 			<data>
-			vyWvJJMXqtRkYDOTC52ybjFWQi0Q6Tm18rYrB4SVr0U=
+			leGKEXod+Zp8G0mcwLuluKAq0VnDg6Jv4N1Cs+wJYko=
 			</data>
 		</dict>
 		<key>Modules/Maps.swiftmodule/i386.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			vz73OM1TdvbgwhIegZDzi9Gf+sk=
+			+H7i04T2m2LnSQD873Gdh7FW9kQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			FjQMnf8rrPddZuF90XuLTr6zff6yZiJm6oedGIObLBs=
+			m5YVjx0wQ2V6epNpnzUq1+2+lsZwv43u0h+xl6XNrcg=
 			</data>
 		</dict>
 		<key>Modules/Maps.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			bjDi5YCqF3qq1O1hGD+6jMcx88U=
+			xsbR84VGms7gozGoWTW10bMB12o=
 			</data>
 			<key>hash2</key>
 			<data>
-			lJD42FrIj0Soz3EXnU2j5bDaq/ge/EyRk5XsIFbqmLA=
+			qF++fsLro1ooH2dK3QZf1cs8UtgCGJ25OwZf3dxyExI=
 			</data>
 		</dict>
 		<key>Modules/Maps.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			INyd3g56ZryoX5ydf9EAciUTcLc=
+			TvbIXH5+wMGjr4Xvn56XmI3uwEQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			5HWFfwDplUlM1mskK2P4YVUtWvKjp1bjSPOAi5difXQ=
+			7ascTxlwqtDWzZdbZiz2elD3xDnirax2oQUcmhhq5vc=
 			</data>
 		</dict>
 		<key>Modules/Maps.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			bjDi5YCqF3qq1O1hGD+6jMcx88U=
+			xsbR84VGms7gozGoWTW10bMB12o=
 			</data>
 			<key>hash2</key>
 			<data>
-			lJD42FrIj0Soz3EXnU2j5bDaq/ge/EyRk5XsIFbqmLA=
+			qF++fsLro1ooH2dK3QZf1cs8UtgCGJ25OwZf3dxyExI=
 			</data>
 		</dict>
 		<key>Modules/Maps.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			INyd3g56ZryoX5ydf9EAciUTcLc=
+			TvbIXH5+wMGjr4Xvn56XmI3uwEQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			5HWFfwDplUlM1mskK2P4YVUtWvKjp1bjSPOAi5difXQ=
+			7ascTxlwqtDWzZdbZiz2elD3xDnirax2oQUcmhhq5vc=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -362,33 +362,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			99qeDPwTCP/KKDelYmGwjosSFCY=
+			A37s3ViaH+GL5Z6fscnE4WsvvdU=
 			</data>
 			<key>hash2</key>
 			<data>
-			3+b2AwrYDKVhPY/FiM64p0FovlPyVNlgFGdpzYuYqxM=
+			6PZGEtGeHWq5RVigqiuZkh0X45rKFbsRo5w6ofd79a0=
 			</data>
 		</dict>
 		<key>PreviewViewController.nib/objects-13.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			sOmLsLtLPeCX43D9oT+s37Tmw0k=
+			7pZyL5qGz51Chr83KfHblY2vfBU=
 			</data>
 			<key>hash2</key>
 			<data>
-			2r1MLB9VyJVzNAIboLItM941Dm3n7eDiqggJ/BhqUzg=
+			/n+nEhMSo8PqyDlacCll6XlLduLOfEXOo6smb8GiUsE=
 			</data>
 		</dict>
 		<key>PreviewViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			KsJ2EkUgPEcD7Rq+G+0VEO1X2bs=
+			4gJ4akJxypeWsoke07CDGCRrL9M=
 			</data>
 			<key>hash2</key>
 			<data>
-			HMAmYLpVFnrz1QdfMZfSrAkveFoDtCmbn40Ep5lhrgc=
+			KHfP+a6O89jN10d8bDxvhql66++DkkSp+Yc2hUZ+Lj4=
 			</data>
 		</dict>
 		<key>empty-map.json</key>

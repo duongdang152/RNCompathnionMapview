@@ -15,7 +15,7 @@
 
 + (BOOL)requiresMainQueueSetup
  {
-     return YES;  // only do this if your module initialization relies on calling UIKit!
+     return YES;
  }
 
 - (instancetype)init {
@@ -42,6 +42,8 @@
     }
     Maps *map = [Maps new];
     map.delegate = self;
+    map.enableNavigationViews = YES;
+    map.disablePOIPreview = YES;;
     _mapViewcontroller = map;
     [parentVc addChildViewController:self.mapViewcontroller];
     [self addSubview:self.mapViewcontroller.view];

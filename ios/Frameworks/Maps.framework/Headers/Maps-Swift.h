@@ -716,6 +716,31 @@ SWIFT_PROTOCOL("_TtP4Maps18MapManagerDelegate_")
 SWIFT_CLASS("_TtC4Maps4Maps")
 @interface Maps : BaseViewController
 @property (nonatomic, weak) id <MapsDelegate> _Nullable delegate;
+/// Pre-selected POI
+/// <ul>
+///   <li>
+///     If populated, the map will focus on this <code>poi</code> upon loading the map
+///   </li>
+/// </ul>
+@property (nonatomic, strong) CTLPOI * _Nullable poi;
+/// If <code>true</code>, it will try to generate and show the path from the user location to the pre-selected <code>poi</code>
+@property (nonatomic) BOOL showPath;
+/// Disables the slide up view upon tapping a <code>poi</code>
+@property (nonatomic) BOOL disablePOIPreview;
+/// Default value is <code>false</code>
+@property (nonatomic) BOOL disableErrorAlerts;
+/// Indicates the current zone or section.
+/// Default value is <code>false</code>
+@property (nonatomic) BOOL disableZoneIndicator;
+/// Provides a label on the upper left side of the map.
+/// <code>disableZoneIndicator</code> should be <code>false</code>. Default value is <code>false</code>
+@property (nonatomic) BOOL useZoneIndicatorLabel;
+/// Removes all the controls on the right hand side of the map.
+/// Default value is <code>false</code>
+@property (nonatomic) BOOL disableDefaultMapControls;
+/// Shows a header view with the path information and a footer view with an <code>end</code> button.
+/// Default value is <code>false</code>
+@property (nonatomic) BOOL enableNavigationViews;
 - (void)viewDidLoad;
 ///
 - (void)viewWillDisappear:(BOOL)animated;
@@ -1571,6 +1596,31 @@ SWIFT_PROTOCOL("_TtP4Maps18MapManagerDelegate_")
 SWIFT_CLASS("_TtC4Maps4Maps")
 @interface Maps : BaseViewController
 @property (nonatomic, weak) id <MapsDelegate> _Nullable delegate;
+/// Pre-selected POI
+/// <ul>
+///   <li>
+///     If populated, the map will focus on this <code>poi</code> upon loading the map
+///   </li>
+/// </ul>
+@property (nonatomic, strong) CTLPOI * _Nullable poi;
+/// If <code>true</code>, it will try to generate and show the path from the user location to the pre-selected <code>poi</code>
+@property (nonatomic) BOOL showPath;
+/// Disables the slide up view upon tapping a <code>poi</code>
+@property (nonatomic) BOOL disablePOIPreview;
+/// Default value is <code>false</code>
+@property (nonatomic) BOOL disableErrorAlerts;
+/// Indicates the current zone or section.
+/// Default value is <code>false</code>
+@property (nonatomic) BOOL disableZoneIndicator;
+/// Provides a label on the upper left side of the map.
+/// <code>disableZoneIndicator</code> should be <code>false</code>. Default value is <code>false</code>
+@property (nonatomic) BOOL useZoneIndicatorLabel;
+/// Removes all the controls on the right hand side of the map.
+/// Default value is <code>false</code>
+@property (nonatomic) BOOL disableDefaultMapControls;
+/// Shows a header view with the path information and a footer view with an <code>end</code> button.
+/// Default value is <code>false</code>
+@property (nonatomic) BOOL enableNavigationViews;
 - (void)viewDidLoad;
 ///
 - (void)viewWillDisappear:(BOOL)animated;
