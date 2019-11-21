@@ -22,6 +22,7 @@
    
     if (self = [super init]) {
          [self embedView];
+        self.clipsToBounds = YES;
     }
     return self;
 }
