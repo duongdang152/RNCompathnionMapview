@@ -22,6 +22,14 @@ export default class App extends Component {
   }
 
   componentDidMount() {
+    // initMap(
+    //   "https://hkl.compathnion.com",
+    //   "charter",
+    //   "hklapp@sagadigits.com",
+    //   "8@yd@KPh7J",
+    //   "f22e49812123",
+    //   "3HSvkUQxaC5u2twV89LnNnqo"
+    // );
     initMap(
       "https://hkch-staging.compathnion.com/",
       "hkch",
@@ -29,9 +37,7 @@ export default class App extends Component {
       "G^sx4;(yEV",
       "0e8de7c60c1c",
       "zlsYYDkWx6n9ph9BZPQVjlSU"
-
     );
-
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -55,12 +61,18 @@ export default class App extends Component {
   }
 
   selectPoi = () => {
+    // this.mapview.focusPOI("cm1tr1-100");
     this.mapview.focusPOI("hbgeu-unit-room-1166580");
   };
 
   navigateP2P = () => {
     this.mapview.unfocusPOI();
-    this.mapview.navigatePOIToPOI("hbgeu-unit-room-1166580", "hkchd1tbbpcu-unit-kiosk-1166932", false);
+    // this.mapview.navigatePOIToPOI("cm1tr1-100", "cm1ta1-101", false);
+    this.mapview.navigatePOIToPOI(
+      "hbgeu-unit-room-1166580",
+      "hb1pcu-unit-kiosk-1166932",
+      false
+    );
   };
 
   onPOIClick = poi => {
@@ -82,7 +94,7 @@ export default class App extends Component {
     });
   };
 
-    render() {
+  render() {
     return (
       <View style={styles.container}>
         <MapView
@@ -109,7 +121,6 @@ export default class App extends Component {
       </View>
     );
   }
-
 }
 
 const styles = StyleSheet.create({
