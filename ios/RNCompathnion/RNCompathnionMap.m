@@ -71,9 +71,11 @@
 }
 
 - (void)navigatePOIToPOI:(NSString *)startPOI endPOI :(NSString *)endPOI disabledPath:(BOOL)disabledPath {
-    [self.mapViewcontroller startNavigationWithStartPOI:startPOI
-                                                 endPOI:endPOI
-                                            disablePath:disabledPath];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.mapViewcontroller startNavigationWithStartPOI:startPOI
+                                                     endPOI:endPOI
+                                                disablePath:disabledPath];
+    });
 }
 
 - (void)navigateCurrentToPOI:(NSString *)destinationPOI disabledPath:(BOOL)disabledPath {
