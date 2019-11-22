@@ -24,7 +24,7 @@ export default class App extends Component {
   componentDidMount() {
     initMap(
       "https://hkl.compathnion.com",
-      "charter",
+      "hong-kong-land",
       "hklapp@sagadigits.com",
       "8@yd@KPh7J",
       "f22e49812123",
@@ -53,12 +53,12 @@ export default class App extends Component {
   }
 
   selectPoi = () => {
-    this.mapview.focusPOI("cm1tr1-100");
+    this.mapview.focusPOI("hklagbg-g3");
   };
 
   navigateP2P = () => {
     this.mapview.unfocusPOI();
-    this.mapview.navigatePOIToPOI("cm1tr1-100", "cm1ta1-101", false);
+    this.mapview.navigatePOIToPOI("hklagbg-g3", "hkla1ea1-102", false);
   };
 
   onPOIClick = poi => {
