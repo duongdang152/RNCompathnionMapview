@@ -8,8 +8,6 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 
-console.log("TEST: ", NativeModules)
-
 const MapViewComponent = requireNativeComponent("MapViewComponent");
 const MapViewModule = NativeModules.MapViewModule;
 const eventEmitter = new NativeEventEmitter(NativeModules.CustomMapView);
