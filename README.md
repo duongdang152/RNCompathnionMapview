@@ -27,6 +27,17 @@ allprojects {
 }
 ```
 
+### iOS
+
+1. Link the 2 frameworks `Maps.framework` and `Mapbox.framework` in `{projectDir}/node_modules/RNCompathnionMapview/ios/Frameworks` to the xCode project.
+2. Go to the project's `General` page, at the `Framesworks, Libraries and Embedded Content` section, set `Maps.framework` to `Embed & Signed` and set `Mapbox.framework` to `Embed without signing`.
+3. Open the project `Info.plist` and add the following:
+```
+<key>MGLMapboxAccessToken</key>  <string>pk.eyJ1IjoiYXJ0aHVyY2hhbiIsImEiOiJjanBiZDJyazQwNnRkM3BtdTdkZzF3YjkwIn0.An8wLxZ8sD75ZxQMsVKJbg</string>
+<key>MGLMapboxMetricsEnabledSettingShownInApp</key>
+<true/>
+```
+
 ## Usage
 
 ### Props
