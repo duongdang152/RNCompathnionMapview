@@ -34,7 +34,8 @@ allprojects {
 3. Open the project `Info.plist` and add the following:
 
 ```
-<key>MGLMapboxAccessToken</key>  <string>pk.eyJ1IjoiYXJ0aHVyY2hhbiIsImEiOiJjanBiZDJyazQwNnRkM3BtdTdkZzF3YjkwIn0.An8wLxZ8sD75ZxQMsVKJbg</string>
+<key>MGLMapboxAccessToken</key>
+<string>pk.eyJ1IjoiYXJ0aHVyY2hhbiIsImEiOiJjanBiZDJyazQwNnRkM3BtdTdkZzF3YjkwIn0.An8wLxZ8sD75ZxQMsVKJbg</string>
 <key>MGLMapboxMetricsEnabledSettingShownInApp</key>
 <true/>
 ```
@@ -61,10 +62,10 @@ allprojects {
 
 ## Changelog
 
-0.1.0:
+### 0.1.0:
 
 - Android version added.
 
-  0.2.0:
+### 0.2.0:
 
 - iOS version added.
