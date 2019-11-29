@@ -57,6 +57,5 @@ android {
 
 dependencies {
     implementation "com.facebook.react:react-native:${_reactNativeVersion}"
-    implementation 'com.compathnion:compathnionsdk-mapview:1.3.3.3'
-    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.compathnion:compathnionsdk-mapview:1.3.5.1'
 }

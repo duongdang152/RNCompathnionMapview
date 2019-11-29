@@ -13,6 +13,7 @@ import com.compathnion.sdk.DataApi;
 import com.compathnion.sdk.LocaleHelper;
 import com.compathnion.sdk.LocationEngine;
 import com.compathnion.sdk.SDK;
+import com.compathnion.sdk.data.db.realm.Notification;
 import com.compathnion.sdk.data.db.realm.Poi;
 import com.compathnion.sdk.data.model.VenueLocation;
 import com.facebook.react.bridge.Arguments;
@@ -38,7 +39,7 @@ public class MapView extends ReactNativeBasedView implements
 
     private static Set<Integer> deliverLocBasedMessageIds = Collections.synchronizedSet(new HashSet<>());
     private LocationEngine locationEngine;
-    private LocationBasedMessage[] allLocationBasedMessage;
+    private List<Notification> notificationList;
 
     public MapView(@NonNull Context context, ReactApplicationContext reactApplicationContext) {
         super(context, reactApplicationContext);
@@ -73,16 +74,7 @@ public class MapView extends ReactNativeBasedView implements
             }
         }, 2000);
 
-        //TODO: Get location based message from CMS
-        allLocationBasedMessage = new LocationBasedMessage[0];
-
-        //TODO: Remove when dont need to test manual location message.
-//        postDelayed(() -> {
-//            WritableMap event = Arguments.createMap();
-//            event.putString("title", "LOCATION TITLE");
-//            event.putString("message", "This is a test message");
-//            reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit("onLocationMessageReceive", event);
-//        }, 10 * 1000);
+        notificationList = SDK.getInstance().getDataApi().getNotifications();
     }
 
     @Override
@@ -90,8 +82,8 @@ public class MapView extends ReactNativeBasedView implements
         super.onViewResume();
 
         if (
-                allLocationBasedMessage != null
-                        && allLocationBasedMessage.length > 0
+                notificationList != null
+                        && notificationList.size() > 0
                         && locationEngine.isLocationPermissionGranted()
         ) {
             locationEngine.addEngineStatusCallback(myLocationEngineCallback);
@@ -163,37 +155,37 @@ public class MapView extends ReactNativeBasedView implements
         @Override
         public void onLocationUpdated(VenueLocation location) {
             // No more message to deliver
-            if (deliverLocBasedMessageIds.size() == allLocationBasedMessage.length) {
+            if (deliverLocBasedMessageIds.size() == notificationList.size()) {
                 return;
             }
 
-            Resources resources = LocaleHelper.getResources(reactContext);
-            //TODO Language settings
-            String language = "en";
-
             Point pointLocation = location.getTurfPoint();
 
-            for (int i = 0; i < allLocationBasedMessage.length; ++i) {
+            for (int i = 0; i < notificationList.size(); ++i) {
                 if (deliverLocBasedMessageIds.contains(i)) {
                     continue;
                 }
 
-                LocationBasedMessage curMessage = allLocationBasedMessage[i];
+                Notification curMessage = notificationList.get(i);
 
-                if (location.level != curMessage.level) {
+                if (location.level != curMessage.getLevel()) {
                     continue;
                 }
 
                 boolean messageCanDeliver = false;
 
-                for (List<Double> lnglat : curMessage.nodes) {
+                List<Double> coordinates = curMessage.getCoordinates();
+                for (int j = 0; j < coordinates.size(); j++) {
+                    Double lat = coordinates.get(j);
+                    Double lng = coordinates.get(++j);
                     double dist = TurfMeasurement.distance(
                             pointLocation,
-                            Point.fromLngLat(lnglat.get(0), lnglat.get(1)),
+                            Point.fromLngLat(lng, lat),
                             TurfConstants.UNIT_METERS
                     );
 
-                    if (dist <= curMessage.thresholdMeter) {
+                    //TODO: No more threshold, what to do?
+                    if (dist <= 5) {
                         messageCanDeliver = true;
                         break;
                     }
@@ -206,14 +198,10 @@ public class MapView extends ReactNativeBasedView implements
                 deliverLocBasedMessageIds.add(i);
 
                 String title = "";
-                if (curMessage.title.containsKey(language)) {
-                    title = curMessage.title.get(language);
-                }
+                title = LocaleHelper.getName(getContext(), curMessage.getTitle());
 
                 String message = "";
-                if (curMessage.message.containsKey(language)) {
-                    message = curMessage.message.get(language);
-                }
+                message = LocaleHelper.getName(getContext(), curMessage.getMessage());
 
                 WritableMap event = Arguments.createMap();
                 event.putString("title", title);
