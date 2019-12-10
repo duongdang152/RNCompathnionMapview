@@ -3,6 +3,7 @@
 #import <React/RCTUIManager.h>
 #import <Maps/Maps.h>
 #import <React/RCTUIManager.h>
+#import "RNMapSetupObserver.h"
 
 @interface RNCompathnionMapManager () // <MapManagerDelegate>
 
@@ -39,6 +40,7 @@ RCT_EXPORT_MODULE(MapViewModule);
 
 RCT_EXPORT_METHOD(initMap:(NSString *)baseHostUrl venueCode:(NSString *)venueCode credUsername:(NSString *)credUsername credPassword:(NSString *)credPassword credClientId:(NSString *)credClientId credClientSecret:(NSString *)credClientSecret)
 {
+    [RNMapSetupObserver sharedInstance];
     ServerCredential *serverCerdential = [[ServerCredential alloc] initWithUsername:credUsername
                                                                            password:credPassword
                                                                            clientId:credClientId
@@ -104,6 +106,7 @@ RCT_EXPORT_METHOD(navigateCurrentToPOI:(nonnull NSNumber *)reactTag destinationP
          }
    }];
 }
+
 
 
 @end

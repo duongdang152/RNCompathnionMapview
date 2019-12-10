@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3740391B239F4410001DE18B /* RNMapSetupObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3740391A239F4410001DE18B /* RNMapSetupObserver.m */; };
 		37755269237B0D7E00B5BC02 /* Maps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37755267237B0D7E00B5BC02 /* Maps.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		3775526A237B0D7E00B5BC02 /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37755268237B0D7E00B5BC02 /* Mapbox.framework */; };
 		37B16F63238292A900011EE6 /* RNMapEventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 37B16F62238292A900011EE6 /* RNMapEventEmitter.m */; };
@@ -30,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNCompathnionMapview.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNCompathnionMapview.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		37403919239F4410001DE18B /* RNMapSetupObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNMapSetupObserver.h; sourceTree = "<group>"; };
+		3740391A239F4410001DE18B /* RNMapSetupObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNMapSetupObserver.m; sourceTree = "<group>"; };
 		37755267237B0D7E00B5BC02 /* Maps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Maps.framework; path = Frameworks/Maps.framework; sourceTree = "<group>"; };
 		37755268237B0D7E00B5BC02 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox.framework; path = Frameworks/Mapbox.framework; sourceTree = "<group>"; };
 		37B16F61238292A900011EE6 /* RNMapEventEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNMapEventEmitter.h; sourceTree = "<group>"; };
@@ -92,6 +95,8 @@
 				37B16F62238292A900011EE6 /* RNMapEventEmitter.m */,
 				8BA6A65A237A4C95000C3ED8 /* RNCompathnionMap.h */,
 				8BA6A65B237A4CEB000C3ED8 /* RNCompathnionMap.m */,
+				37403919239F4410001DE18B /* RNMapSetupObserver.h */,
+				3740391A239F4410001DE18B /* RNMapSetupObserver.m */,
 				8BA6A65D237A4D1E000C3ED8 /* RNCompathnionMapviewManager.h */,
 				8BA6A661237A4DA0000C3ED8 /* RNCompathnionMapviewManager.m */,
 				8BA6A65F237A4D7A000C3ED8 /* UIView+Parent.m */,
@@ -131,6 +136,7 @@
 				TargetAttributes = {
 					58B511DA1A9E6C8500147676 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 1110;
 					};
 				};
 			};
@@ -160,6 +166,7 @@
 				8BA6A662237A4DA0000C3ED8 /* RNCompathnionMapviewManager.m in Sources */,
 				37B16F63238292A900011EE6 /* RNMapEventEmitter.m in Sources */,
 				8BA6A660237A4D7A000C3ED8 /* UIView+Parent.m in Sources */,
+				3740391B239F4410001DE18B /* RNMapSetupObserver.m in Sources */,
 				8BA6A659237A4B36000C3ED8 /* RNCompathnionMapManager.m in Sources */,
 				8BA6A65C237A4CEB000C3ED8 /* RNCompathnionMap.m in Sources */,
 			);
@@ -205,7 +212,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -242,7 +249,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -252,6 +259,7 @@
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -264,16 +272,21 @@
 					"$(SRCROOT)/../../react-native/React/**",
 					"\"$(SRCROOT)/Frameworks\"",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNCompathnionMapview;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNCompathnion/RNCompathnionMapview-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -286,10 +299,13 @@
 					"$(SRCROOT)/../../react-native/React/**",
 					"\"$(SRCROOT)/Frameworks\"",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNCompathnionMapview;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNCompathnion/RNCompathnionMapview-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

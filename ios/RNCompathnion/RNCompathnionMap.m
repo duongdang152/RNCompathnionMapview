@@ -3,11 +3,13 @@
 #import "UIView+Parent.h"
 #import <Maps/Maps.h>
 #import "RNMapEventEmitter.h"
+#import "RNMapSetupObserver.h"
 
 @interface RNCompathnionMap () <MapsDelegate>
 
 @property (nonatomic, strong) MapManager *mapManager;
 @property (nonatomic) BOOL didEmbeded;
+@property (nonatomic, strong) NSTimer *observerSetupTimer;
 
 @end
 
@@ -37,8 +39,29 @@
 }
 
 - (void)embedView {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self checkMapIsValidAndSetupMapView];
+    });
+}
+
+- (void)waitForSetupCompleted {
+    if (self.observerSetupTimer && [self.observerSetupTimer isValid]) {
+        return;
+    } else {
+        self.observerSetupTimer = [NSTimer scheduledTimerWithTimeInterval:2 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            [self checkMapIsValidAndSetupMapView];
+        }];
+    }
+}
+
+- (void)checkMapIsValidAndSetupMapView {
     UIViewController *parentVc = [self parentViewController];
     if (!parentVc) {
+        return;
+    }
+    
+    if (![[RNMapSetupObserver sharedInstance] isFullSetupCompleted]) {
+        [self waitForSetupCompleted];
         return;
     }
     Maps *map = [Maps new];
@@ -59,8 +82,9 @@
                                              selector:@selector(didDeselectPOI:)
                                                  name:MapConstants.MAP_DID_DESELECT_POI_NOTIFICATION
                                                object:nil];
+    [self.observerSetupTimer invalidate];
+    self.observerSetupTimer = nil;
 }
-
 
 - (void)focusPOI:(NSString *)poiCode {
     [self.mapViewcontroller focusWithPoiID:poiCode];
